@@ -1,0 +1,67 @@
+.login-container {
+  background: var(--fd-main-color);
+
+  @apply h-screen w-screen
+  m-0 p-0
+  flex flex-col items-center justify-center gap-[20px];
+}
+
+.logo-container {
+  @apply w-full flex justify-center;
+}
+
+.logo-text {
+  @apply text-[2rem] font-semibold text-white;
+}
+
+.login-form-container {
+  @apply h-[400px] w-[500px]
+  rounded-xl
+  bg-White dark:bg-Dark
+  flex flex-col justify-between
+  p-8;
+}
+
+.login-form-title-container {
+  @apply flex flex-col justify-start gap-2;
+}
+
+.login-form-title {
+  @apply text-xl/[1rem]
+  font-semibold;
+}
+
+.login-form-caption {
+  @apply text-xs
+  text-slate-500;
+}
+
+.login-field-container {
+  @apply w-full
+  flex flex-col justify-center items-center gap-[15px];
+}
+
+.common-text-field-container {
+  @apply w-full
+  flex flex-col gap-[5px];
+}
+
+.text-field-label {
+  @apply font-light;
+}
+
+.button-container {
+  @apply w-full
+  flex justify-center;
+}
+
+.login-button {
+  @apply w-full;
+}
+
+.login-button > span {
+  @apply flex items-center;
+}
+.inputtext {
+  border: 2px solid #000;
+}

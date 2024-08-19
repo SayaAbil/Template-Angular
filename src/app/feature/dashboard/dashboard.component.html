@@ -1,0 +1,396 @@
+<!-- <div class="w-full h-full px-5 py-3 overflow-auto flex gap-5">
+  <div class="w-full grow h-full flex flex-col gap-5 min-w-[30rem]">
+    <div class="shrink-0 grow-0 basis-[10rem]">
+      <p-card class="ds-card">
+        <div class="flex flex-col gap-5 h-full w-full">
+          <div class="flex justify-between grow-0 shrink-0 items-center">
+            <div class="flex flex-col gap-[3px] grow-0 shrink-0">
+              <span style="font-size: 1rem; font-weight: bold">Transaction Status</span>
+              <span style="font-size: .7rem">Showing transaction status by flagging</span>
+            </div>
+
+            <div class="shrink-0 grow-0 basis-[10rem]">
+              <p-dropdown class="field-dropdown" optionValue="code" (onChange)="transactionStatusDate($event)" [options]="StringUtils.dummyDateRange" optionLabel="name"
+              ></p-dropdown>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-3 gap-5 grow w-full">
+            <p-card class="ds-card ds-card-not-fraud">
+              <div class="summary-con">
+                <span class="txt-1">{{isDataNotNull(transactionStatus[0]) ? transactionStatus[0].totalCount : 0}}</span>
+                <div class="summary-sub-con">
+                  <span class="txt-2">Not Fraud Transaction</span>
+                </div>
+              </div>
+            </p-card>
+
+            <p-card class="ds-card ds-card-suspicious">
+              <div class="summary-con">
+                <span class="txt-1">{{isDataNotNull(transactionStatus[1]) ? transactionStatus[1].totalCount : 0}}</span>
+                <div class="summary-sub-con">
+                  <span class="txt-2">Suspicious Transaction</span>
+                </div>
+              </div>
+            </p-card>
+
+            <p-card class="ds-card ds-card-fraud">
+              <div class="summary-con">
+                <span class="txt-1">{{isDataNotNull(transactionStatus[2]) ? transactionStatus[2].totalCount : 0}}</span>
+                <div class="summary-sub-con">
+                  <span class="txt-2">Fraud Transaction</span>
+                </div>
+              </div>
+            </p-card>
+          </div>
+        </div>
+      </p-card>
+    </div>
+
+    <div class="w-full shrink-0 min-h-[20rem] grow pb-1">
+      <p-card class="ds-card">
+        <div style="height: 100%; width: 100%; position: relative">
+          <div echarts [merge]="transActivityChartOpt" [options]="transActivityChartOpt"
+               style="width: 100%; height: 100%; position: absolute"></div>
+        </div>
+      </p-card>
+    </div>
+  </div>
+  <div class="shrink-0 flex flex-col basis-[25rem] grow-0 h-full gap-5">
+    <div class="grow-0 w-full shrink-0 basis-[18rem]">
+      <p-card>
+        <div style="height: 100%; width: 100%; position: relative">
+          <div echarts [merge]="alertCaseActivityChartOpt" [options]="alertCaseActivityChartOpt"
+               style="width: 100%; height: 100%; position: absolute"></div>
+        </div>
+      </p-card>
+    </div>
+
+    <div class="grow w-full pb-1">
+      <p-card>
+        <div class="top-rule-trigger-container">
+          <div style="display: flex; flex-direction: column; gap: 3px">
+            <span style="font-size: 1rem; font-weight: bold">Top Rule Triggered</span>
+            <span style="font-size: .7rem">Showing Top Triggered Rule</span>
+          </div>
+
+          <p-table
+            [resizableColumns]="true"
+            [value]="topRuleTriggeredData"
+            selectionMode="single"
+            [exportHeader]="'customExportHeader'"
+            [scrollable]="true"
+            scrollHeight="30vh"
+            dataKey="id" class="top-rule-trigger-table" styleClass="p-datatable-sm p-datatable-gridlines">
+            <ng-template pTemplate="header">
+              <tr>
+                <th style="width: 3rem">Id</th>
+                <th pResizableColumn>Name</th>
+                <th style="width: 3rem">Total</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-product>
+              <tr [pSelectableRow]="product">
+                <td>{{product.ruleId}}</td>
+                <td class="row-width-xs">{{product.ruleName}}</td>
+                <td>{{product.totalTriggered}}</td>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+              <tr style="">
+                <td colspan="11">There is no data.</td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      </p-card>
+    </div>
+  </div>
+</div> -->
+
+<!-- <ng-template [ngIf]="isLoading">
+  <app-overlay-loading [isLoading]="isLoading"></app-overlay-loading>
+</ng-template> -->
+
+<!--<div class="dashboard-container">-->
+<!--  <div class="ds-con-1">-->
+<!--    <div class="counter-main-container">-->
+<!--      <div class="counter-container">-->
+<!--        <p-card class="ds-card ds-card-not-fraud">-->
+<!--          <div class="summary-con">-->
+<!--            <span class="txt-1">{{isDataNotNull(transactionStatus[0]) ? transactionStatus[0].totalCount : 0}}</span>-->
+<!--            <div class="summary-sub-con">-->
+<!--              <span class="txt-2">Not Fraud Transaction</span>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </p-card>-->
+<!--      </div>-->
+<!--      <div class="counter-container">-->
+<!--        <p-card class="ds-card ds-card-suspicious">-->
+<!--          <div class="summary-con">-->
+<!--            <span class="txt-1">{{isDataNotNull(transactionStatus[1]) ? transactionStatus[1].totalCount : 0}}</span>-->
+<!--            <div class="summary-sub-con">-->
+<!--              <span class="txt-2">Suspicious Transaction</span>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </p-card>-->
+<!--      </div>-->
+<!--      <div class="counter-container">-->
+<!--        <p-card class="ds-card ds-card-fraud">-->
+<!--          <div class="summary-con">-->
+<!--            <span class="txt-1">{{isDataNotNull(transactionStatus[2]) ? transactionStatus[2].totalCount : 0}}</span>-->
+<!--            <div class="summary-sub-con">-->
+<!--              <span class="txt-2">Fraud Transaction</span>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </p-card>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div style="height: 100%">-->
+<!--      <p-card class="ds-card">-->
+<!--        <div style="height: 100%; width: 100%; position: relative">-->
+<!--          <div echarts [merge]="transActivityChartOpt" [options]="transActivityChartOpt" style="width: 100%; height: 100%; position: absolute"></div>-->
+<!--        </div>-->
+<!--      </p-card>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  -->
+<!--  <div class="ds-con-2">-->
+<!--    <div class="sub-ds-con2-1">-->
+<!--      <p-card>-->
+<!--        <div style="height: 100%; width: 100%; position: relative">-->
+<!--          <div echarts [merge]="alertCaseActivityChartOpt" [options]="alertCaseActivityChartOpt" style="width: 100%; height: 100%; position: absolute"></div>-->
+<!--        </div>-->
+<!--      </p-card>-->
+<!--    </div>-->
+<!--    <div class="sub-ds-con2-2">-->
+<!--      <p-card>-->
+<!--        <div class="top-rule-trigger-container">-->
+<!--          <div style="display: flex; flex-direction: column; gap: 3px">-->
+<!--            <span style="font-size: 1rem; font-weight: bold">Top Rule Triggered</span>-->
+<!--            <span style="font-size: .7rem">Showing Top Triggered Rule</span>-->
+<!--          </div>-->
+
+<!--          <p-table-->
+<!--            [resizableColumns]="true"-->
+<!--            [value]="topRuleTriggeredData"-->
+<!--            selectionMode="single"-->
+<!--            [exportHeader]="'customExportHeader'"-->
+<!--            [scrollable]="true"-->
+<!--            scrollHeight="30vh"-->
+<!--            dataKey="id" class="top-rule-trigger-table" styleClass="p-datatable-sm p-datatable-gridlines">-->
+<!--            <ng-template pTemplate="header">-->
+<!--              <tr>-->
+<!--                <th style="width: 3rem">Id</th>-->
+<!--                <th pResizableColumn>Name</th>-->
+<!--                <th style="width: 3rem">Total</th>-->
+<!--              </tr>-->
+<!--            </ng-template>-->
+<!--            <ng-template pTemplate="body" let-product>-->
+<!--              <tr [pSelectableRow]="product">-->
+<!--                <td>{{product.ruleId}}</td>-->
+<!--                <td class="row-width-xs">{{product.ruleName}}</td>-->
+<!--                <td>{{product.totalTriggered}}</td>-->
+<!--              </tr>-->
+<!--            </ng-template>-->
+<!--            <ng-template pTemplate="emptymessage">-->
+<!--              <tr style="">-->
+<!--                <td colspan="11">There is no data.</td>-->
+<!--              </tr>-->
+<!--            </ng-template>-->
+<!--          </p-table>-->
+<!--        </div>-->
+<!--      </p-card>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+<!--<ng-template [ngIf]="isLoading">-->
+<!--  <app-overlay-loading [isLoading]="isLoading"></app-overlay-loading>-->
+<!--</ng-template>-->
+
+<div
+  class="flex flex-col py-[15px] pr-[15px] xlg:pl-[5px] max-xlg:pl-[15px] w-full bg-transparent h-full gap-[15px]"
+>
+  <div class="w-full h-full flex max-xlg:flex-col">
+    <div class="w-full xlg:h-full bg-transparent animation-all xlg:pr-[410px]">
+      <div class="w-full h-full flex-col flex gap-[15px]">
+        <div class="w-full h-auto gap-[10px] flex flex-col bg-transparent">
+          <div class="w-full bg-transparent flex items-center justify-between">
+            <div>
+              <p class="text-[17px] text-gray-500 dark:text-White font-bold">
+                Transaction Status
+              </p>
+              <p class="text-[13px] text-black">
+                Showing transaction status by flagging
+              </p>
+            </div>
+            <div class="flex items-center gap-[10px]">
+              <p-dropdown
+                class="border-none"
+                optionValue="code"
+                (onChange)="transactionStatusDate($event)"
+                [options]="StringUtils.dummyDateRange"
+                optionLabel="name"
+              ></p-dropdown>
+            </div>
+          </div>
+          <div
+            class="w-full gap-[10px] h-auto grid grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1"
+            [ngClass]="{ 'col-span-2': closeRule }"
+          >
+            <div
+              class="bg-green-600 transition-all duration-500 text-white rounded-md p-[15px] flex flex-col gap-[15px]"
+            >
+              <p class="text-[30px]">
+                {{
+                  isDataNotNull(transactionStatus[0])
+                    ? transactionStatus[0].totalCount
+                    : 0
+                }}
+              </p>
+              <p class="font-bold">Not Fraud Transaction</p>
+            </div>
+            <div
+              class="bg-yellow-500 text-white rounded-md p-[15px] flex flex-col gap-[15px]"
+            >
+              <p class="text-[30px]">
+                {{
+                  isDataNotNull(transactionStatus[1])
+                    ? transactionStatus[1].totalCount
+                    : 0
+                }}
+              </p>
+              <p class="font-bold">Suspicious Transaction</p>
+            </div>
+            <div
+              class="text-white rounded-md p-[15px] flex flex-col gap-[15px] max-sm:col-span-1 max-md:col-span-2"
+              style="background-color: #ec486a"
+            >
+              <p class="text-[30px]">
+                {{
+                  isDataNotNull(transactionStatus[2])
+                    ? transactionStatus[2].totalCount
+                    : 0
+                }}
+              </p>
+              <p class="font-bold">Fraud Transaction</p>
+            </div>
+          </div>
+        </div>
+        <div
+          class="w-full h-full gap-[10px] max-xlg:h-[600px] flex flex-col bg-transparent"
+        >
+          <div class="w-full bg-transparent flex justify-end gap-[15px]">
+            <div class="flex flex-col items-end">
+              <p class="text-[17px] text-gray-500 dark:text-White font-bold">
+                Transaction Activity
+              </p>
+              <p class="text-[13px] text-black">
+                Showing transaction activity from now - 6 days ago
+              </p>
+            </div>
+            <button
+              class="bg-White dark:bg-Dark px-[12px] rounded-md capitalize flex items-center justify-center text-black"
+              (click)="onCloseRule()"
+            >
+              <ng-icon name="ionOpenOutline" class="text-[17px] z-50"></ng-icon>
+            </button>
+          </div>
+          <div
+            class="w-full h-full grid gap-[15px]"
+            [ngClass]="{
+              'grid-cols-1': closeRule,
+              'xlg:grid-cols-2 max-xlg:grid-cols-1': !closeRule,
+            }"
+          >
+            <div
+              *ngIf="!closeRule"
+              class="bg-White dark:bg-Dark flex xlg:flex-col max-xlg:h-full items-center p-[10px] justify-center rounded-md"
+            >
+              <div style="height: 100%; width: 100%; position: relative">
+                <div
+                  echarts
+                  [merge]="alertCaseActivityChartOpt"
+                  [options]="alertCaseActivityChartOpt"
+                  style="width: 100%; height: 100%; position: absolute"
+                ></div>
+              </div>
+            </div>
+            <div
+              class="bg-White dark:bg-Dark flex items-center max-xlg:h-full p-[10px] justify-center rounded-md relative"
+            >
+              <div
+                echarts
+                [options]="transActivityChartOpt"
+                style="width: 100%; height: 100%; position: relative"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="xlg:w-[400px] max-xlg:w-full gap-[15px] max-xlg:h-[400px] xlg:h-full xlg:fixed top-0 right-[10px] xlg:pt-[85px] max-xlg:pt-[20px]"
+    >
+      <div
+        *ngIf="closeRule"
+        class="bg-White dark:bg-Dark flex items-center w-full h-[300px] p-[10px] justify-center rounded-md"
+      >
+        <div style="height: 100%; width: 100%; position: relative">
+          <div
+            echarts
+            [merge]="alertCaseActivityChartOpt"
+            [options]="alertCaseActivityChartOpt"
+            style="width: 100%; height: 100%; position: absolute"
+          ></div>
+        </div>
+      </div>
+      <div
+        class="w-full h-full bg-White dark:bg-Dark rounded-md flex flex-col gap-[20px] p-[15px]"
+        [ngClass]="{ 'mt-[15px]': closeRule }"
+      >
+        <div class="flex flex-col">
+          <p class="text-[18px] text-gray-500 dark:text-White font-bold">
+            Top Rule Triggered
+          </p>
+          <p class="text-[13px]">Showing Top Triggered Rule</p>
+        </div>
+        <div
+          class="w-full h-full overflow-y-auto flex items-start justify-center"
+        >
+          <p-table
+            [resizableColumns]="true"
+            [value]="topRuleTriggeredData"
+            selectionMode="single"
+            [exportHeader]="'customExportHeader'"
+            dataKey="id"
+            class="w-full"
+            styleClass="p-datatable-sm "
+          >
+            <ng-template pTemplate="header">
+              <tr class="border-b border-black/2">
+                <th style="width: 3rem" class="">Id</th>
+                <th pResizableColumn class=" ">Name</th>
+                <th style="width: 3rem" class="">Total</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-product>
+              <tr [pSelectableRow]="product">
+                <td>{{ product.ruleId }}</td>
+                <td class="row-width-xs">{{ product.ruleName }}</td>
+                <td>{{ product.totalTriggered }}</td>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+              <tr>
+                <td colspan="11">There is no data.</td>
+              </tr>
+            </ng-template>
+          </p-table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

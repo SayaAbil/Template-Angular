@@ -1,0 +1,21 @@
+<div>
+  <form>
+    <div [formGroup]="form">
+      <div>
+        <span>Username</span>
+        <input formControlName="username" pInputText/>
+      </div>
+
+      <div>
+        <span>Password</span>
+        <p-password formControlName="password" [feedback]="false" [toggleMask]="true" />
+      </div>
+    </div>
+
+    <div>
+      <button type="submit" mat-raised-button color="primary" (click)="onLogin(form.value)" [disabled]="isValueNotValid() || isLoading">
+        <span>Login</span>
+      </button>
+    </div>
+  </form>
+</div>
